@@ -1,0 +1,49 @@
+TABLE 1: USERS
+
+id              PRIMARY KEY
+name            VARCHAR(100)
+email           VARCHAR(100) UNIQUE
+password        VARCHAR(255)
+role            ENUM (EMP, RM, APE, CFO)
+created_at
+updated_at
+
+
+TABLE 2: EMPLOYEE_MANAGERS
+
+id              PRIMARY KEY
+employee_id     FOREIGN KEY → users.id
+manager_id      FOREIGN KEY → users.id
+created_at
+
+
+TABLE 3: REIMBURSEMENTS
+
+id              PRIMARY KEY
+employee_id      FOREIGN KEY → users.id
+
+title            VARCHAR(200)
+description      TEXT
+amount           DECIMAL
+
+status           ENUM (PENDING, APPROVED, REJECTED)
+
+rm_approved      BOOLEAN
+ape_approved     BOOLEAN
+
+created_at
+updated_at
+
+
+TABLE 4: APPROVAL_LOGS
+
+id                  PRIMARY KEY
+reimbursement_id    FOREIGN KEY → reimbursements.id
+
+approved_by         FOREIGN KEY → users.id
+
+role                VARCHAR(10)
+
+action              ENUM (APPROVED, REJECTED)
+
+created_at
