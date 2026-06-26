@@ -76,10 +76,6 @@ const getVisibleReimbursements = async (user) => {
 
   if (user.role === 'EMP') {
     query.where = { employee_id: user.id };
-  } else if (user.role === 'RM') {
-    query.where = { rm_approved: false, status: 'PENDING' };
-  } else if (user.role === 'APE') {
-    query.where = { rm_approved: true, ape_approved: false, status: 'PENDING' };
   }
 
   return Reimbursement.findAll(query);
