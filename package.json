@@ -1,29 +1,14 @@
 {
   "name": "razorpay-assignment",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/app.js",
+  "private": true,
   "scripts": {
-    "dev": "nodemon src/app.js",
-    "db:migrate": "sequelize db:migrate",
-    "db:seed-data": "sequelize db:seed:all",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "pg": "^8.22.0",
-    "sequelize": "^6.37.8"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14",
-    "sequelize-cli": "^6.6.5"
+    "dev": "npm --prefix Backend run dev",
+    "dev:backend": "npm --prefix Backend run dev",
+    "dev:frontend": "npm --prefix Frontend run dev",
+    "build:frontend": "npm --prefix Frontend run build",
+    "db:migrate": "npm --prefix Backend run db:migrate",
+    "db:seed-data": "npm --prefix Backend run db:seed-data",
+    "test": "npm --prefix Backend test"
   }
 }

@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ quiet: true });
+const logger = require('../src/utils/logger');
 
 module.exports = {
   development: {
@@ -14,7 +15,7 @@ module.exports = {
         rejectUnauthorized: false
       }
     },
-    logging: console.log,
+    logging: (message) => logger.debug(message),
     pool: {
       max: 5,
       min: 0,
@@ -35,7 +36,7 @@ module.exports = {
         rejectUnauthorized: false
       }
     },
-    logging: console.log,
+    logging: (message) => logger.debug(message),
     pool: {
       max: 5,
       min: 0,
