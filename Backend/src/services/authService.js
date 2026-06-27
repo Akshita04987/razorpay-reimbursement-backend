@@ -28,10 +28,6 @@ const registerUser = async ({ name, email, password, role = 'EMP' }) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // DEBUG
-  console.log("REGISTER PASSWORD:", password);
-  console.log("HASHED PASSWORD:", hashedPassword);
-
   const user = await User.create({
     name,
     email,
@@ -53,13 +49,7 @@ const loginUser = async ({ email, password }) => {
     throw new AppError('Invalid credentials', 401);
   }
 
-  // DEBUG
-  console.log("LOGIN PASSWORD:", password);
-  console.log("DB PASSWORD:", user.password);
-
   const isPasswordValid = await bcrypt.compare(password, user.password);
-
-  console.log("PASSWORD MATCH:", isPasswordValid);
 
   if (!isPasswordValid) {
     throw new AppError('Invalid credentials', 401);
